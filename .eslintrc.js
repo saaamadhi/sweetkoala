@@ -1,7 +1,7 @@
 const production = process.env.NODE_ENV === 'production';
 
 module.exports = {
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   env: {
     browser: true,
     es2021: true,
@@ -19,6 +19,7 @@ module.exports = {
     },
     ecmaVersion: 'latest',
     sourceType: 'module',
+    requireConfigFile: false
   },
   plugins: ['react', 'react-hooks', 'prettier'],
   rules: {
