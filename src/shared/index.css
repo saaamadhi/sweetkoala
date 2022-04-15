@@ -1,0 +1,14 @@
+:root {
+  --color-base: #3bc8bf;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-grey-1: #272727;
+
+  --spacing-base: 8px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

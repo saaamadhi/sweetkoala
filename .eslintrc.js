@@ -6,7 +6,7 @@ module.exports = {
     browser: true,
     es2021: true,
     node: true,
-    serviceworker: true
+    serviceworker: true,
   },
   extends: [
     'eslint:recommended',
@@ -19,11 +19,13 @@ module.exports = {
     },
     ecmaVersion: 'latest',
     sourceType: 'module',
-    requireConfigFile: false
+    requireConfigFile: false,
   },
   plugins: ['react', 'react-hooks', 'prettier'],
   rules: {
-    'arrow-parens': ['error', 'as-needed'],
+    'no-unused-vars': 0,
+    'no-undef': ['warn', { typeof: true }],
+    'arrow-parens': ['error'],
     'eol-last': ['error', 'always'],
     'import/extensions': [
       'error',
