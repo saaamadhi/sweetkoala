@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import classNames from 'classnames';
 import notifications from '../../shared/assets/notifications.svg';
 import loupe from '../../shared/assets/loupe.svg';
@@ -45,22 +46,27 @@ const Header = () => {
         <ul className={classNames(menu_nav, { [open]: showMenu })}>
           <li className={classNames(menu_nav__item, { [open]: showMenu })}>
             <a href="#" className={menu_nav__link}>
-              Home
+              <FormattedMessage id="global.catalog" />
             </a>
           </li>
           <li className={classNames(menu_nav__item, { [open]: showMenu })}>
             <a href="#" className={menu_nav__link}>
-              About me
+              <FormattedMessage id="global.shops" />
             </a>
           </li>
           <li className={classNames(menu_nav__item, { [open]: showMenu })}>
             <a href="#" className={menu_nav__link}>
-              My projects
+              <FormattedMessage id="global.delivery" />
             </a>
           </li>
           <li className={classNames(menu_nav__item, { [open]: showMenu })}>
             <a href="#" className={menu_nav__link}>
-              Contact me
+              <FormattedMessage id="global.about" />
+            </a>
+          </li>
+          <li className={classNames(menu_nav__item, { [open]: showMenu })}>
+            <a href="#" className={menu_nav__link}>
+              <FormattedMessage id="global.help" />
             </a>
           </li>
         </ul>

@@ -74,7 +74,7 @@
 
 .nav {
   position: fixed;
-  top: 50px;
+  top: 57px;
   left: 0;
   width: 100%;
   opacity: 0.98;
@@ -104,7 +104,7 @@
 }
 
 .nav .menu_nav__item {
-  transform: translateX(100vw);
+  transform: translateX(100%);
   transition: all 0.5s ease-in-out;
 }
 
@@ -118,6 +118,7 @@
 
 .nav .menu_nav__link {
   display: inline-block;
+  text-decoration: none;
   font-size: 2rem;
   text-transform: uppercase;
   padding: 2rem 0;
@@ -138,4 +139,58 @@
 .loupe_icon {
   padding-top: calc(var(--spacing-base) * 0.6);
   padding-right: calc(var(--spacing-base) + 15%)
+}
+
+@media (min-width: 320px) {
+}
+
+@media (min-width: 768px) {
+  .menu_container {
+    display: none;
+  }
+
+  .nav {
+    position: static;
+    top: 0;
+    visibility: visible;
+  }
+
+  .nav .menu_nav { 
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    background: transparent;
+    padding: 0;
+    transform: translateY(0);
+    height: 100%;
+  }
+
+  .nav .menu_nav__item {
+    transform: translateX(0);
+  }
+
+  .nav .menu_nav__link {
+    display: flex;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .menu_nav__item:not(:first-child)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -3.5rem;
+    width: 1.5px;
+    height: 1.5rem;
+    margin: 0.3% 1.2% 0;
+    background: var(--color-white);
+    transform: rotate(20deg);
+}
+}
+
+@media (min-width: 990px) {
+}
+
+@media (min-width: 1400px) {
 }
