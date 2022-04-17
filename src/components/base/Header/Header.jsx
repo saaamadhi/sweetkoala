@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import classNames from 'classnames';
-import notifications from '../../shared/assets/notifications.svg';
-import loupe from '../../shared/assets/loupe.svg';
-import logo from '../../shared/assets/logo.svg';
-import avatar from '../../shared/assets/avatar.svg';
-import shopping_cart from '../../shared/assets/shopping_cart.svg';
+import notifications from '../../../shared/assets/notifications.svg';
+import loupe from '../../../shared/assets/loupe.svg';
+import logo from '../../../shared/assets/logo.svg';
+import avatar from '../../../shared/assets/avatar.svg';
+import shopping_cart from '../../../shared/assets/shopping_cart.svg';
 import styles from './header.css';
 
 const Header = () => {
