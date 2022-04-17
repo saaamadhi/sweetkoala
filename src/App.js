@@ -1,14 +1,31 @@
+import { useEffect } from 'react';
+import { Navigate, Routes, Route, useNavigate } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
-import Header from './components/Header';
+import Home from './components/pages/Home';
 import messages from './shared/msgs/ru_BY.json';
 
 const App = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate('/');
+  }, [navigate]);
+
   return (
     <IntlProvider locale="ru" messages={messages}>
-      <div>
-        <Header />
-        It works!
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<Navigate replace to="/home" />} /> */}
+
+        {/* 
+       //replace Redirect with Navigate
+      <Route path="*" element={<Navigate to ="/products" />}/> */}
+
+        {/* <Route
+          path="/restricted"
+          element={<ProtectedRoutes component={Dashboard} />}
+        ></Route> */}
+      </Routes>
     </IntlProvider>
   );
 };
