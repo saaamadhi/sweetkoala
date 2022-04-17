@@ -15,11 +15,7 @@ const App = () => {
     <IntlProvider locale="ru" messages={messages}>
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/" element={<Navigate replace to="/home" />} /> */}
-
-        {/* 
-       //replace Redirect with Navigate
-      <Route path="*" element={<Navigate to ="/products" />}/> */}
+        <Route path="/*" element={<Navigate replace to="/404" />} />
 
         {/* <Route
           path="/restricted"
