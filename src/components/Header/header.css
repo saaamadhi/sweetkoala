@@ -150,7 +150,7 @@
 }
 
 .shopping_cart_icon {
-  margin: 0 var(--spacing-xlarge)
+  margin: 0 var(--spacing-xlarge);
 }
 
 @media (min-width: 768px) {
