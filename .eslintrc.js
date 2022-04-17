@@ -5,6 +5,9 @@ const production = process.env.NODE_ENV === 'production';
 
 module.exports = {
   parser: '@babel/eslint-parser',
+  settings: {
+    'import/resolver': 'webpack',
+  },
   env: {
     browser: true,
     es2021: true,
