@@ -1,0 +1,220 @@
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 var(--spacing-large);
+  background: var(--color-base);
+}
+
+.menu_container__inner {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.menu_btn {
+  position: relative;
+  width: 28px;
+  height: 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.9s ease-in-out;
+}
+
+.menu_btn__burger {
+  position: absolute;
+  left: 0;
+  top: var(--spacing-base);
+  width: 28px;
+  height: 3px;
+  border-radius: 30px;
+  background: var(--color-white);
+  transition: all 0.9s ease-in-out;
+}
+
+.menu_btn__burger::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--spacing-base) * -1);
+  width: 28px;
+  height: 3px;
+  border-radius: 30px;
+  background: var(--color-white);
+  transition: all 0.9s ease-in-out;
+}
+
+.menu_btn__burger::after {
+  content: '';
+  position: absolute;
+  top: var(--spacing-base);
+  width: 28px;
+  height: 3px;
+  border-radius: 30px;
+  background: var(--color-white);
+  transition: all 0.9s ease-in-out;
+}
+
+.menu_btn__burger.open {
+  transform: rotate(720deg);
+  background: transparent;
+}
+
+.menu_btn__burger.open::before {
+  transform: rotate(45deg) translate(5px, var(--spacing-base));
+}
+
+.menu_btn__burger.open::after {
+  transform: rotate(-45deg) translate(3px, -7px);
+}
+
+.nav {
+  position: fixed;
+  padding: var(--spacing-base) 0;
+  top: 33px;
+  left: 0;
+  width: 100%;
+  visibility: hidden;
+}
+
+.nav.open {
+  visibility: visible;
+}
+
+.nav .menu_nav {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-white);
+  list-style-type: none;
+  transform: translateY(-100%);
+  transition: all 0.5s ease-in-out;
+}
+
+.nav .menu_nav.open {
+  transform: translateY(0);
+}
+
+.nav .menu_nav__item {
+  width: 100%;
+  margin-bottom: var(--spacing-xlarge);
+  transform: translateX(100%);
+  transition: all 0.5s ease-in-out;
+}
+
+.nav .menu_nav__item.open {
+  transform: translateX(0);
+}
+
+.nav .menu_nav__link {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  padding: var(--spacing-large);
+  color: var(--color-black);
+  background: var(--color-grey-7);
+  text-decoration: none;
+  transition: all 0.5s ease-in-out;
+  overflow-y: auto;
+}
+
+.nav .menu_nav__link:hover {
+  box-shadow: 0 2px 0 var(--color-white);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  margin: var(--spacing-base);
+}
+
+.actions_desktop {
+  display: none;
+}
+
+.loupe_icon {
+  padding-top: calc(var(--spacing-base) * 0.6);
+  padding-right: calc(var(--spacing-base) + 15%);
+}
+
+.menu_logo {
+  margin-left: var(--spacing-large);
+}
+
+.avatar_icon {
+  margin-right: var(--spacing-large);
+}
+
+.shopping_cart_icon {
+  margin: 0 var(--spacing-xlarge);
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding: var(--spacing-base);
+  }
+
+  .menu_btn,
+  .actions {
+    display: none;
+  }
+
+  .actions_desktop {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .nav {
+    padding: 0;
+    position: static;
+    top: 0;
+    visibility: visible;
+  }
+
+  .nav .menu_nav {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    background: transparent;
+    transform: translateY(0);
+    height: 100%;
+  }
+
+  .nav .menu_nav__item {
+    margin: 0;
+    width: initial;
+    transform: translateX(0);
+  }
+
+  .nav .menu_nav__link {
+    display: flex;
+    padding: 0;
+    background: none;
+    color: var(--color-white);
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .menu_nav__item:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -3vw;
+    width: 1.5px;
+    height: 1.5rem;
+    margin: 0.3% 1.2% 0;
+    background: var(--color-white);
+    transform: rotate(20deg);
+  }
+}
+
+@media (min-width: 990px) {
+  .menu_nav__item:not(:last-child)::before {
+    right: -4vw;
+  }
+}
