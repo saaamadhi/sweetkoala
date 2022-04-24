@@ -24,7 +24,7 @@ const App = () => {
         {/* 
        //replace Redirect with Navigate
       <Route path="*" element={<Navigate to ="/products" />}/> */}
-
+        <Route path="/*" element={<Navigate replace to="/404" />} />
         {/* <Route
           path="/restricted"
           element={<ProtectedRoutes component={Dashboard} />}
