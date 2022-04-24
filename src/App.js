@@ -4,6 +4,7 @@ import { IntlProvider } from 'react-intl';
 import Home from './components/pages/Home';
 import messages from './shared/msgs/ru_BY.json';
 import Login from './components/base/Login';
+import Registration from './components/base/Registration';
 
 const App = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Registration />} />
         {/* <Route path="/" element={<Navigate replace to="/home" />} /> */}
 
         {/* 
