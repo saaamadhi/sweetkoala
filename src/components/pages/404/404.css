@@ -1,0 +1,31 @@
+:root {
+  --not-found-img-width: 200px;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page_icon {
+  width: var(--not-found-img-width);
+}
+
+.not_found_img {
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (min-width: 481px){
+  :root {
+    --not-found-img-width: 300px;
+  }
+}
+
+@media (min-width: 768px){
+  :root {
+    --not-found-img-width: 600px;
+  }
+}

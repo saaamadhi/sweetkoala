@@ -1,0 +1,45 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 200px;
+  height: 200px;
+  border: 1px solid grey;
+  padding: 5px;
+}
+
+.wrap button {
+  outline: none;
+  border:none;
+  background: none;
+  cursor: pointer;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.main_info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.img {
+  width: 120px;
+  height: 90px;
+  border: 1px solid purple;
+}
+
+.like {
+  color: var(--color-grey-6);
+}
+
+.basket {
+  width: 24px;
+  height: 24px;
+}

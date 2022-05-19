@@ -1,19 +1,24 @@
 import { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { TextField } from '@mui/material';
 import classNames from 'classnames';
 import notifications from '../../../shared/assets/notifications.svg';
-import loupe from '../../../shared/assets/loupe.svg';
+import PersonIcon from '@mui/icons-material/Person';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import logo from '../../../shared/assets/logo.svg';
-import avatar from '../../../shared/assets/avatar.svg';
-import shopping_cart from '../../../shared/assets/shopping_cart.svg';
+import SearchIcon from '@mui/icons-material/Search';
 import styles from './header.css';
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [searchText, setSearchText] = useState('');
 
   const {
     header,
     actions_desktop,
+    search,
+    search_icon,
+    actions_search_icon,
     menu_container__inner,
     menu_logo,
     menu_btn,
@@ -38,10 +43,10 @@ const Header = () => {
               [open]: showMenu,
             })}></span>
         </div>
-        <img className={menu_logo} src={logo} alt="logo"></img>
+        <img className={menu_logo} src={logo} alt="logo" />
       </div>
       <div className={actions}>
-        <img className={loupe_icon} src={loupe} alt="loupe" />
+        <SearchIcon className={loupe_icon} />
         <img src={notifications} alt="notifications" />
       </div>
       <nav className={classNames(nav, { [open]: showMenu })}>
@@ -53,12 +58,12 @@ const Header = () => {
           </li>
           <li className={classNames(menu_nav__item, { [open]: showMenu })}>
             <a href="#" className={menu_nav__link}>
-              <FormattedMessage id="global.shops" />
+              <FormattedMessage id="global.delivery" />
             </a>
           </li>
           <li className={classNames(menu_nav__item, { [open]: showMenu })}>
             <a href="#" className={menu_nav__link}>
-              <FormattedMessage id="global.delivery" />
+              <FormattedMessage id="global.contacts" />
             </a>
           </li>
           <li className={classNames(menu_nav__item, { [open]: showMenu })}>
@@ -73,13 +78,20 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      <div className={actions_desktop}>
-        <img
-          className={shopping_cart_icon}
-          src={shopping_cart}
-          alt="shopping_cart"
+      <div className={search}>
+        <TextField
+          id="search_input"
+          type="input"
+          variant="outlined"
+          margin="normal"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
         />
-        <img className={avatar_icon} src={avatar} alt="avatar" />
+        <SearchIcon className={search_icon} />
+      </div>
+      <div className={actions_desktop}>
+        <ShoppingCartIcon className={shopping_cart_icon} />
+        <PersonIcon className={avatar_icon} />
       </div>
     </header>
   );

@@ -1,7 +1,22 @@
 {
-  "global.shops": "Магазины",
+  "global.contacts": "Контакты",
   "global.about": "О нас",
   "global.catalog": "Каталог",
   "global.delivery": "Доставка",
-  "global.help": "Помощь"
+  "global.help": "Помощь",
+  "login": "Войти",
+  "signup": "Зарегистрироваться",
+  "email": "Почта",
+  "password": "Пароль",
+  "err.smthWentWrong": "Ошибка!Что-то пошло не так",
+  "err.password": "Неверный пароль",
+  "err.auth": "Пользователь не авторизован",
+  "err.emailFormat": "Некорректный формат электронной почты!",
+  "err.phoneFormat": "Указан неверный формат телефона!",
+  "err.emailNotFount": "Пользователь с такой почтой не найден",
+  "err.createUser": "Пользователь не может быть создан!",
+  "err.loginUser": "Пользователь не может быть авторизован!",
+  "err.findUser": "Пользователь не найден!",
+  "err.findUsers": "Записи пользователей отсутствуют!",
+  "checkbox.Privacy&Policy": "By signing up, you agree to our Terms of Use and Privacy Policy."
 }
