@@ -1,11 +1,5 @@
 import { createStore } from 'redux';
-import allReducers from '../reducers';
-
-const initialState = {
-  user: {
-    token: '',
-  },
-};
+import allReducers, { initialState } from '../reducers';
 
 const reduxDevTools =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();

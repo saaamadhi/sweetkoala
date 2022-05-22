@@ -1,15 +1,16 @@
 import { Types } from './actionTypes';
 
 export const ActionCreators = {
-  // login: (user) => ({ type: Types.LOGIN, payload: { user } }),
-
-  // registration: (user) => ({
-  //   type: Types.REGISTRATION,
-  //   payload: { user },
-  // }),
-
   setAuthToken: (token) => ({
     type: Types.SET_AUTH_TOKEN,
     payload: token,
+  }),
+  setUserRole: (role) => ({
+    type: Types.SET_USER_ROLE,
+    payload: role,
+  }),
+  setCatalog: (data) => ({
+    type: Types.SET_CATALOG,
+    payload: data,
   }),
 };

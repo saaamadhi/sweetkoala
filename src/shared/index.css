@@ -22,3 +22,10 @@
   box-sizing: border-box;
   font-family: var(--font-base);
 }
+
+button {
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer
+}

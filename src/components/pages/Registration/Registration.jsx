@@ -31,25 +31,25 @@ const Registration = () => {
   const { wrap, content, form, form__input, page_icon } = styles;
 
   const intl = useIntl();
-  const API_URL = 'http://localhost:5000/user/';
 
   const hadleSubmit = () => {
     if (email === '' || password === '') {
-      confirm('All rows should be filled!');
+      confirm(intl.formatMessage({ id: 'err.fields' }));
 
       return;
     } else if (!checked) {
-      confirm('you should sign up checkbox!');
+      confirm(intl.formatMessage({ id: 'err.checkBox' }));
 
       return;
     } else {
       registration('CLIENT', email, password)
-        .then(({ data }) => {
+        .then((data) => {
           dispatch(ActionCreators.setAuthToken(data.token));
+          dispatch(ActionCreators.setUserRole(data.role));
           navigate('/');
         })
         .catch((e) => {
-          confirm('something went wrong!');
+          confirm(intl.formatMessage({ id: 'err.smthWentWrong' }));
         });
     }
   };

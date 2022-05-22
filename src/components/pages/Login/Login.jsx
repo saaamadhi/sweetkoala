@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import Footer from '../../base/Footer';
+import { useDispatch } from 'react-redux';
+import { useNavigate, NavLink } from 'react-router-dom';
+import { login } from '../../../shared/services/auth.service';
+import { ActionCreators } from '../../../redux/actions/actionCreators';
+
 import Header from '../../base/Header';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { TextField, Button } from '@mui/material';
@@ -12,9 +17,38 @@ const Login = () => {
 
   const [error, setError] = useState(false);
 
-  const { wrap, content, form, button, form__input, page_icon } = styles;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const {
+    wrap,
+    content,
+    form,
+    button,
+    form__input,
+    page_icon,
+    registration_link,
+  } = styles;
 
   const intl = useIntl();
+
+  const handleLogin = () => {
+    if (email === '' || password === '') {
+      confirm(intl.formatMessage({ id: 'err.fields' }));
+
+      return;
+    } else {
+      login(email, password)
+        .then((data) => {
+          dispatch(ActionCreators.setAuthToken(data.token));
+          dispatch(ActionCreators.setUserRole(data.role));
+          navigate('/');
+        })
+        .catch((e) => {
+          confirm(intl.formatMessage({ id: 'err.smthWentWrong' }));
+        });
+    }
+  };
 
   return (
     <div className={wrap}>
@@ -40,6 +74,7 @@ const Login = () => {
           />
           <TextField
             id="password"
+            type="password"
             label={intl.formatMessage({ id: 'password' })}
             variant="outlined"
             margin="normal"
@@ -52,9 +87,13 @@ const Login = () => {
               },
             }}
           />
-          <Button variant="contained" disableElevation>
+          <Button variant="contained" disableElevation onClick={handleLogin}>
             <FormattedMessage id="login" />
           </Button>
+
+          <NavLink to="/registration" className={registration_link}>
+            {intl.formatMessage({ id: 'dontHaveAcc' })}
+          </NavLink>
         </form>
       </div>
     </div>

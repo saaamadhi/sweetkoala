@@ -71,7 +71,7 @@ const UserController = {
 
       const token = generateToken(user.id, user.email, user.role);
 
-      return res.json({ token });
+      return res.json({ token, role });
     } catch (e) {
       res.status(500).json({ msg: "User can't be created" });
     }
@@ -94,7 +94,30 @@ const UserController = {
 
       const token = generateToken(user.id, user.email, user.role);
 
-      return res.json({ token });
+      return res.json({ token, role: user.role });
+    } catch (e) {
+      res.status(500).json({ msg: "Can't login user!" });
+    }
+  },
+  adminLogin: async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+      const user = await User.findOne({ where: { email } });
+
+      if (!user) {
+        res.status(400).json({ msg: "This user doesn't exist!" });
+      }
+
+      const comparePassword = password === user.password;
+
+      if (!comparePassword) {
+        res.status(400).json({ msg: 'Password is incorrect!' });
+      }
+
+      const token = generateToken(user.id, user.email, user.role);
+
+      return res.json({ token, role: user.role });
     } catch (e) {
       res.status(500).json({ msg: "Can't login user!" });
     }

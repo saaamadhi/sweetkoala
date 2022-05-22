@@ -20,17 +20,11 @@ export const registration = (role, email, password) => {
   });
 };
 
-const login = (role, email, password) => {
+export const login = (email, password) => {
   return axios.post(API_URL + 'login', {
-    role,
+    email,
     password,
   });
-  // .then((response) => {
-  //   if (response.data.accessToken) {
-  //     localStorage.setItem('user', JSON.stringify(response.data));
-  //   }
-  //   return response.data;
-  // });
 };
 
 const logout = () => {

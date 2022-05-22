@@ -9,12 +9,6 @@ app.use(express.json());
 app.use('/', router);
 
 /*
-app.get('/catalog', (req, res) => {
-    pool.query('SELECT * FROM product', (error, result) => {
-        if (error) throw error;
-        res.send(result.rows);
-    });
-});
 
 app.get('/manufactorers', (req, res) => {
     pool.query('SELECT * FROM manufactorer', (error, result) => {
