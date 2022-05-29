@@ -42,40 +42,44 @@ const Product = sequelize.define(
       unique: true,
       allowNull: false,
     },
-    //   p_description: {
-    //     type: DataTypes.TEXT,
-    //   },
-    //   p_weight: {
-    //     type: DataTypes.STRING,
-    //   },
-    //   p_weight_range: {
-    //     type: DataTypes.STRING,
-    //   },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    weight: {
+      type: DataTypes.STRING,
+    },
+    weight_range: {
+      type: DataTypes.STRING,
+    },
     price: {
       type: DataTypes.DOUBLE,
       allowNull: false,
     },
-    //   p_max_quantity: {
-    //     type: DataTypes.DOUBLE,
-    //   },
-    //   p_max_quantity_range: {
-    //     type: DataTypes.STRING,
-    //   },
-    //   p_company: {
-    //     type: DataTypes.STRING,
-    //   },
-    //   p_manufacturer: {
-    //     type: DataTypes.STRING,
-    //   },
-    //   p_on_sale: {
-    //     type: DataTypes.BOOLEAN,
-    //   },
-    //   p_discount_price: {
-    //     type: DataTypes.DOUBLE,
-    //   },
-    //   p_thumb: {
-    //     type: DataTypes.STRING,
-    //   },
+    price_range: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    max_quantity: {
+      type: DataTypes.DOUBLE,
+      allowNull: false,
+    },
+    max_quantity_range: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    manufacturer: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    on_sale: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    discount_price: {
+      type: DataTypes.DOUBLE,
+      allowNull: true,
+    },
   },
   {
     timestamps: false,
@@ -118,18 +122,18 @@ const WishList = sequelize.define(
 const Coupone = sequelize.define(
   'coupone',
   {
-    coupone_id: {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
       allowNull: false,
     },
-    coupone_code: {
+    code: {
       type: DataTypes.STRING,
       unique: true,
       allowNull: false,
     },
-    coupone_status: {
+    status: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -308,13 +312,14 @@ const User = sequelize.define(
       defaultValue: 'CLIENT',
       allowNull: false,
     },
-    // name: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
-    // surname: {
-    //   type: DataTypes.STRING,
-    // },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    surname: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     email: {
       type: DataTypes.STRING,
       unique: true,
@@ -324,12 +329,10 @@ const User = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // phone: {
-    //   type: DataTypes.STRING,
-    // },
-    // avatar: {
-    //   type: DataTypes.STRING,
-    // },
+    phone: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     timestamps: false,
@@ -353,7 +356,11 @@ const OrderProduct = sequelize.define(
 Coupone.hasMany(Cart);
 Cart.belongsTo(Coupone);
 
-Address.hasOne(User);
+Address.hasOne(User, {
+  foreignKey: {
+    allowNull: true,
+  },
+});
 User.belongsTo(Address);
 
 User.hasOne(Cart);

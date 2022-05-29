@@ -27,5 +27,6 @@ button {
   outline: none;
   border: none;
   background: transparent;
-  cursor: pointer
+  cursor: pointer;
+  font-family: var(--font-base);
 }

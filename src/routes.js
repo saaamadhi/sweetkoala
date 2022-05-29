@@ -24,6 +24,7 @@ import {
   BASE_ROUTE,
   NOT_FOUND_ROUTE,
   LOGIN_ROUTE,
+  LOGOUT_ROUTE,
   REGISTRATION_ROUTE,
   CART_ROUTE,
   WISH_LIST_ROUTE,
@@ -48,11 +49,6 @@ export const authAdminRoutes = [
     name: 'admin',
     path: `${ADMIN_ROUTE}${ADMIN_DASHBOARD}`,
     element: <Dashboard />,
-  },
-  {
-    name: 'login',
-    path: `${ADMIN_ROUTE}${ADMIN_LOGIN}`,
-    element: <AdminLogin />,
   },
   {
     name: 'coupones',
@@ -140,51 +136,60 @@ export const publicRoutes = [
     path: ABOUT_ROUTE,
     element: <About />,
   },
+  {
+    name: 'adminlogin',
+    path: `${ADMIN_ROUTE}${ADMIN_LOGIN}`,
+    element: <AdminLogin />,
+  },
 ];
-
-export const UserRoutes = (isAuth) => {
-  return (
-    <Routes>
-      {isAuth &&
-        authRoutes.map((route) => (
-          <Route key={route.name} path={route.path} element={route.Component} />
-        ))}
-      {publicRoutes.map((route) => (
-        <Route key={route.name} path={route.path} element={route.element} />
-      ))}
-      {isAuth && <Route path={LOGIN_ROUTE} element={<Navigate to="/404" />} />}
-      {isAuth && (
-        <Route path={REGISTRATION_ROUTE} element={<Navigate to="/404" />} />
-      )}
-      <Route path="*" element={<Navigate to="/404" />} />
-    </Routes>
-  );
-};
-
-export const AdminRoutes = (isAuth) => {
-  return (
-    <Routes>
-      {isAuth &&
-        authAdminRoutes.map((route) => (
-          <Route key={route.name} path={route.path} element={route.Component} />
-        ))}
-
-      <Route
-        path="*"
-        element={<Navigate to={isAuth ? '/404' : '/admin/login'} />}
-      />
-    </Routes>
-  );
-};
 
 export const BaseRoutes = (userRole, isAuth) => {
   return useMemo(() => {
     switch (userRole) {
       case 'ADMIN': {
-        return <AdminRoutes isAuth={isAuth} />;
+        return (
+          <Routes>
+            {isAuth &&
+              authAdminRoutes.map((route) => (
+                <Route
+                  key={route.name}
+                  path={route.path}
+                  element={route.Component}
+                />
+              ))}
+            <Route path="*" element={<Navigate to={'/404'} />} />
+          </Routes>
+        );
       }
+
       default: {
-        return <UserRoutes isAuth={isAuth} />;
+        return (
+          <Routes>
+            {isAuth &&
+              authRoutes.map((route) => (
+                <Route
+                  key={route.name}
+                  path={route.path}
+                  element={route.Component}
+                />
+              ))}
+            {publicRoutes.map((route) => (
+              <Route
+                key={route.name}
+                path={route.path}
+                element={route.element}
+              />
+            ))}
+            {!isAuth && (
+              <Route
+                key="adminlogin"
+                path={`${ADMIN_ROUTE}${ADMIN_LOGIN}`}
+                element={<AdminLogin />}
+              />
+            )}
+            <Route path="*" element={<Navigate to="/404" />} />
+          </Routes>
+        );
       }
     }
   }, [userRole, isAuth]);

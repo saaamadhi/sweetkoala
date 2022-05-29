@@ -157,6 +157,50 @@ const UserController = {
       res.status(500).json({ msg: "Can't find user!" });
     }
   },
+  delete: async (req, res) => {
+    const { userId } = req.body;
+
+    try {
+      const user = await User.destroy({ where: { id: userId } });
+
+      if (!user) {
+        res.status(400).json({ msg: "Can't find any user with that id!" });
+      }
+
+      return res.json({ msg: `deleted row(s): ${user}` });
+    } catch (e) {
+      res.status(500).json({ msg: "Can't delete user!" });
+    }
+  },
+  add: async (req, res) => {
+    const { name } = req.body;
+
+    //todo: add all needed attr here
+    try {
+      await User.create({
+        name: name,
+      });
+
+      return res.json({ msg: 'user added' });
+    } catch (e) {
+      res.status(500).json({ msg: "Can't add user!" });
+    }
+  },
+  update: async (req, res) => {
+    const { userId, newValue } = req.body;
+
+    //todo: add all needed attr here
+    try {
+      await User.upsert({
+        id: userId,
+        lastName: newValue,
+      });
+
+      return res.json({ msg: 'user row updated' });
+    } catch (e) {
+      res.status(500).json({ msg: "Can't update user row!" });
+    }
+  },
 };
 
 module.exports = UserController;

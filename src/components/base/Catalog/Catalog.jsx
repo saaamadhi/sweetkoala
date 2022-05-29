@@ -8,7 +8,6 @@ import { store } from '../../../redux/store';
 import styles from './catalog.css';
 
 const Catalog = ({ products }) => {
-  const state = store.getState();
   const { wrap, content } = styles;
 
   return (
@@ -18,6 +17,7 @@ const Catalog = ({ products }) => {
           {products.map((item) => (
             <CatalogCard
               key={item.sku}
+              item={item}
               publicId={`${CLAUDINARY_PATH}/image/upload/v1652370045/${item.sku}.jpg`}
             />
           ))}

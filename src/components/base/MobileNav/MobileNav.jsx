@@ -6,7 +6,7 @@ import { FormattedMessage } from 'react-intl';
 import styles from './mobileNav.css';
 
 const MobileNav = ({ showMenu, setShowMenu, isAuth }) => {
-  const { nav, menu_nav, menu_nav__item, menu_nav__link } = styles;
+  const { nav, menu_nav, menu_nav__item, menu_nav__link, mobile_nav } = styles;
 
   return (
     <nav className={classNames(nav, { [open]: showMenu })}>
@@ -62,7 +62,12 @@ const MobileNav = ({ showMenu, setShowMenu, isAuth }) => {
           </NavLink>
         </li>
         {!isAuth ? (
-          <li className={classNames(menu_nav__item, { [open]: showMenu })}>
+          <li
+            className={classNames(
+              menu_nav__item,
+              { [open]: showMenu },
+              mobile_nav
+            )}>
             <NavLink
               to="/login"
               className={menu_nav__link}
@@ -73,7 +78,12 @@ const MobileNav = ({ showMenu, setShowMenu, isAuth }) => {
             </NavLink>
           </li>
         ) : (
-          <li className={classNames(menu_nav__item, { [open]: showMenu })}>
+          <li
+            className={classNames(
+              menu_nav__item,
+              { [open]: showMenu },
+              mobile_nav
+            )}>
             <NavLink
               to="/account"
               className={menu_nav__link}

@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import Footer from '../../base/Footer';
 import { useDispatch } from 'react-redux';
 import { useNavigate, NavLink } from 'react-router-dom';
-import { login } from '../../../shared/services/auth.service';
-import { ActionCreators } from '../../../redux/actions/actionCreators';
-
-import Header from '../../base/Header';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { TextField, Button } from '@mui/material';
+import { login } from '../../../shared/services/auth.service';
+import { ActionCreators } from '../../../redux/actions/actionCreators';
+import Header from '../../base/Header';
 import login_icon from '../../../shared/assets/login_icon.svg';
 import styles from './login.css';
 
@@ -39,7 +37,7 @@ const Login = () => {
       return;
     } else {
       login(email, password)
-        .then((data) => {
+        .then(({ data }) => {
           dispatch(ActionCreators.setAuthToken(data.token));
           dispatch(ActionCreators.setUserRole(data.role));
           navigate('/');

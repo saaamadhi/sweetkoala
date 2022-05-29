@@ -9,10 +9,8 @@ import {
   Checkbox,
 } from '@mui/material';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { Types } from '../../../redux/actions/actionTypes';
 import { registration } from '../../../shared/services/auth.service';
 import { ActionCreators } from '../../../redux/actions/actionCreators';
-import axios from 'axios';
 import registration_icon from '../../../shared/assets/registration_icon.svg';
 import Header from '../../base/Header';
 import styles from './registration.css';
@@ -32,6 +30,10 @@ const Registration = () => {
 
   const intl = useIntl();
 
+  //todo: add validation if user already sign in banned redirecting to the login/registration pages
+  //todo: add validation for email + password
+  //todo: add toster for err msgs and etc
+
   const hadleSubmit = () => {
     if (email === '' || password === '') {
       confirm(intl.formatMessage({ id: 'err.fields' }));
@@ -43,7 +45,7 @@ const Registration = () => {
       return;
     } else {
       registration('CLIENT', email, password)
-        .then((data) => {
+        .then(({ data }) => {
           dispatch(ActionCreators.setAuthToken(data.token));
           dispatch(ActionCreators.setUserRole(data.role));
           navigate('/');

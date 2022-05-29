@@ -1,6 +1,7 @@
 export const BASE_ROUTE = '/';
 export const NOT_FOUND_ROUTE = '/404';
 export const LOGIN_ROUTE = '/login';
+export const LOGOUT_ROUTE = '/logout';
 export const REGISTRATION_ROUTE = '/registration';
 export const CART_ROUTE = '/cart';
 export const WISH_LIST_ROUTE = '/saved-list';

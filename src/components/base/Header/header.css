@@ -1,6 +1,5 @@
 :root {
   --space-beetween-links: 2%;
-  --action-btns-width: 60px;
 }
 
 body {
@@ -90,10 +89,6 @@ body {
   margin: var(--spacing-base);
 }
 
-.actions_desktop {
-  display: none;
-}
-
 .loupe_icon {
   height: 17px;
   width: 18px;
@@ -106,48 +101,8 @@ body {
   margin-left: var(--spacing-large);
 }
 
-.actions_desktop svg {
-  width: 25px;
-  height: 25px;
-  fill: var(--color-white);
-}
-
-.shopping_cart_icon {
-  transform: scaleX(-1);
-}
-
 .search_icon {
   color: var(--color-base);
-}
-
-.btn__avatar_icon {
-  position: relative;
-} 
-
-.account_dropdown_content a {
-  color: var(--color-black);
-  padding: var(--spacing-base);
-  text-decoration: none;
-  display: block;
-}
-
-.account_dropdown_content a:hover {
-  border-radius: 10px;
-}
-
-.account_dropdown_content {
-  display: none;
-  border-radius: 10px;
-}
-
-.account_dropdown:hover .account_dropdown_content {
-  display: block;
-  position: absolute;
-  top: 50px;
-  right: 15px;
-  background-color: var(--color-white);
-  border: 1px solid var(--color-grey-7);
-  z-index: 10;
 }
 
 @media (min-width: 768px) {
@@ -158,13 +113,6 @@ body {
   .menu_btn,
   .actions {
     display: none;
-  }
-
-  .actions_desktop {
-    display: flex;
-    width: var(--action-btns-width);
-    justify-content: space-between;
-    margin: 0 var(--spacing-large);
   }
 
   .search {

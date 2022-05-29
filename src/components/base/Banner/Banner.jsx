@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Image, CloudinaryContext } from 'cloudinary-react';
-
+import { CLAUDINARY_PATH } from '../../../shared/const';
 import bannerData from './index.json';
 import styles from './banner.css';
 
@@ -12,12 +12,13 @@ const Banner = () => {
   const moveDot = (index) => {
     setSlideIndex(index);
   };
+  //todo: update banner a bit to allow sliding
 
   return (
     <div className={container}>
       <Image
         className={img}
-        publicId={`https://res.cloudinary.com/dg91vh5ga/image/upload/v1652641119/promo_2.png`}
+        publicId={`${CLAUDINARY_PATH}/image/upload/v1652641119/promo_2.png`}
       />
       {/* {bannerData.map((obj, index) => {
         return (

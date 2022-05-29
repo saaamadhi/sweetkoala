@@ -26,7 +26,3 @@ export const login = (email, password) => {
     password,
   });
 };
-
-const logout = () => {
-  localStorage.removeItem('user');
-};

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { TextField } from '@mui/material';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import { FormattedMessage, useIntl } from 'react-intl';
 import MobileNav from '../MobileNav';
@@ -9,6 +9,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import logo from '../../../shared/assets/logo.svg';
 import SearchIcon from '@mui/icons-material/Search';
+import ActionsDesktop from '../ActionsDesktop';
 import styles from './header.css';
 import { store } from '../../../redux/store';
 
@@ -20,6 +21,7 @@ const Header = () => {
   const isAuth = state?.user?.token?.length;
 
   const intl = useIntl();
+  const navigate = useNavigate();
 
   const {
     header,
@@ -49,6 +51,10 @@ const Header = () => {
   const handleClickOnMenu = () => {
     document.body.style.overflow = !showMenu ? 'hidden' : 'visible';
     setShowMenu(!showMenu);
+  };
+
+  const handleOnCartClick = () => {
+    navigate('/cart');
   };
 
   return (
@@ -82,25 +88,7 @@ const Header = () => {
         />
         <SearchIcon className={search_icon} />
       </div>
-      <div className={actions_desktop}>
-        <ShoppingCartIcon className={shopping_cart_icon} />
-        <div className={account_dropdown}>
-          <button className={btn__avatar_icon} type="button">
-            <PersonIcon className={avatar_icon} />
-          </button>
-          <div className={account_dropdown_content}>
-            {isAuth ? (
-              <NavLink to="/login">
-                {intl.formatMessage({ id: 'login' })}
-              </NavLink>
-            ) : (
-              <NavLink to="/account">
-                {intl.formatMessage({ id: 'global.account' })}
-              </NavLink>
-            )}
-          </div>
-        </div>
-      </div>
+      <ActionsDesktop isAuth={isAuth} />
     </header>
   );
 };

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Navigate, Routes, Route } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import { CloudinaryContext } from 'cloudinary-react';
 import { BaseRoutes } from './routes';
