@@ -1,0 +1,34 @@
+.wrap {
+  text-align: center;
+  height: 100vh;
+}
+
+form {
+  padding: 20px;
+}
+
+.content {
+  height: 100%
+}
+
+.form__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+  height: 400px;
+}
+
+.form__inner button {
+  margin-top: 20px;
+}
+
+.textarea {
+  flex-grow: 1;
+  margin: 15px 0;
+}
+
+.textarea, input, button, .form__inner div {
+  width: 100%
+}

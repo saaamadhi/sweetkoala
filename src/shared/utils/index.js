@@ -1,0 +1,22 @@
+export const BASE_ROUTE = '/';
+export const NOT_FOUND_ROUTE = '/404';
+export const LOGIN_ROUTE = '/login';
+export const LOGOUT_ROUTE = '/logout';
+export const REGISTRATION_ROUTE = '/registration';
+export const CART_ROUTE = '/cart';
+export const WISH_LIST_ROUTE = '/saved-list';
+export const HELP_PAGE_ROUTE = '/help';
+export const CONTACTS_ROUTE = '/contacts';
+export const DELIVERY_ROUTE = '/delivery';
+export const PRODUCT_ROUTE = '/product';
+export const ABOUT_ROUTE = '/about';
+export const NOTIFICATIONS_ROUTE = '/notifications';
+export const ACCOUNT_ROUTE = '/account';
+
+export const ADMIN_ROUTE = '/admin';
+export const ADMIN_LOGIN = '/login';
+export const ADMIN_DASHBOARD = '/dashboard';
+export const ADMIN_COUPONES_ROUTE = '/coupones';
+export const ADMIN_CUSTOMERS_ROUTE = '/customers';
+export const ADMIN_ORDERS_ROUTE = '/orders';
+export const ADMIN_PRODUCTS_ROUTE = '/products';

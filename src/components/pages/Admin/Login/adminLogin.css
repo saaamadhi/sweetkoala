@@ -1,0 +1,34 @@
+.wrap {
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-grey-6);
+  height: calc(100vh - 70px);
+}
+
+.content span {
+  font-size: 32px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+}
+
+.form div {
+  width: 100%;
+}
+
+.form button {
+  margin-top: 20px;
+  width: 100%;
+  font-family: var(--font-base);
+}
