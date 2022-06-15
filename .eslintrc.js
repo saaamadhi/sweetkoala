@@ -60,7 +60,7 @@ module.exports = {
     'require-await': 'error',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
-    'react/jsx-indent': ['error', 2],
+    'react/jsx-indent': 'off',
     'react/jsx-props-no-spreading': [1, { custom: 'ignore' }],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/jsx-fragments': [2, 'element'],

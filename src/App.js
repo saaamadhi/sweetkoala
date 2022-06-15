@@ -1,27 +1,29 @@
-import { useEffect } from 'react';
-import { Navigate, Routes, Route, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import { IntlProvider } from 'react-intl';
-import Home from './components/pages/Home';
+import { CloudinaryContext } from 'cloudinary-react';
+import { BaseRoutes } from './routes';
+import { store } from './redux/store';
 import messages from './shared/msgs/ru_BY.json';
 
 const App = () => {
-  const navigate = useNavigate();
+  const [isAuth, setIsAuth] = useState('');
+  const [userRole, setUserRole] = useState('');
+
+  const state = store.getState();
 
   useEffect(() => {
-    navigate('/');
-  }, [navigate]);
+    const userToken = state.user.token.length;
+    const userRole = state.user.role;
+
+    setIsAuth(userToken);
+    setUserRole(userRole);
+  }, [state.user.token.length, state.user.role]);
 
   return (
     <IntlProvider locale="ru" messages={messages}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/*" element={<Navigate replace to="/404" />} />
-
-        {/* <Route
-          path="/restricted"
-          element={<ProtectedRoutes component={Dashboard} />}
-        ></Route> */}
-      </Routes>
+      <CloudinaryContext cloudName={String(process.env.CLOUDINARY_NAME)}>
+        {<BaseRoutes userRole={userRole} isAuth={isAuth} />}
+      </CloudinaryContext>
     </IntlProvider>
   );
 };

@@ -1,0 +1,35 @@
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.content {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-gap: 10px;
+}
+
+@media (min-width: 481px){
+  .content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px){
+  .wrap {
+    padding: 0 20px 0;
+  }
+  
+  .content {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 990px) {
+  .content {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
