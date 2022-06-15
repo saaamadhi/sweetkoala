@@ -1,13 +1,13 @@
 import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import { arrayOf, string, number, shape } from 'prop-types';
+import { arrayOf, string, number, shape, bool } from 'prop-types';
 import { CLAUDINARY_PATH } from '../../../shared/const';
 import CatalogCard from '../CatalogCard';
 import { store } from '../../../redux/store';
 import styles from './catalog.css';
 
-const Catalog = ({ products }) => {
+const Catalog = ({ products, loading }) => {
   const { wrap, content } = styles;
 
   return (
@@ -23,9 +23,11 @@ const Catalog = ({ products }) => {
           ))}
         </div>
       ) : (
-        <h1>
-          <FormattedMessage id="err.noProductsLeft" />
-        </h1>
+        !loading && (
+          <h1>
+            <FormattedMessage id="err.noProductsLeft" />
+          </h1>
+        )
       )}
     </div>
   );
@@ -34,6 +36,7 @@ const Catalog = ({ products }) => {
 export default Catalog;
 
 Catalog.propTypes = {
+  loading: bool,
   products: arrayOf(
     shape({
       id: number,

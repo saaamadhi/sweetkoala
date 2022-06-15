@@ -168,10 +168,10 @@ const Payment = sequelize.define(
       autoIncrement: true,
       allowNull: false,
     },
-    type: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    // type: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
     status: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -180,10 +180,10 @@ const Payment = sequelize.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    date: {
-      type: DataTypes.DATE,
-      allowNull: true,
-    },
+    // date: {
+    //   type: DataTypes.DATE,
+    //   allowNull: true,
+    // },
   },
   {
     timestamps: false,
@@ -216,15 +216,15 @@ const Order = sequelize.define(
       unique: true,
       allowNull: false,
     },
-    createdAt: {
-      type: DataTypes.DATE,
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
-      allowNull: false,
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
-    },
+    // createdAt: {
+    //   type: DataTypes.DATE,
+    //   defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+    //   allowNull: false,
+    // },
+    // updatedAt: {
+    //   type: DataTypes.DATE,
+    //   defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+    // },
     status: {
       type: DataTypes.STRING,
       defaultValue: 'PENDING',
@@ -383,6 +383,12 @@ Product.belongsTo(Category);
 
 Payment.hasOne(Order);
 Order.belongsTo(Payment);
+
+// OrderItem.hasOne(Product);
+// Product.belongsTo(OrderItem);
+
+// Order.hasMany(OrderItem, { as: 'items', onDelete: 'CASCADE' });
+// OrderItem.belongsTo(Order);
 
 Order.belongsToMany(Product, { through: OrderProduct, onDelete: 'CASCADE' });
 Product.belongsToMany(Order, { through: OrderProduct, onDelete: 'CASCADE' });

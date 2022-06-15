@@ -15,7 +15,6 @@ import Cart from './components/pages/Cart';
 import Account from './components/pages/User/Account';
 import About from './components/pages/AboutUs';
 import Delivery from './components/pages/Delivery';
-import Contacts from './components/pages/Contacts';
 import Help from './components/pages/HelpPage';
 import WishList from './components/pages/WishList';
 import Notifications from './components/pages/NotificationsEl';
@@ -120,11 +119,6 @@ export const publicRoutes = [
     name: 'help',
     path: HELP_PAGE_ROUTE,
     element: <Help />,
-  },
-  {
-    name: 'contacts',
-    path: CONTACTS_ROUTE,
-    element: <Contacts />,
   },
   {
     name: 'delivery',

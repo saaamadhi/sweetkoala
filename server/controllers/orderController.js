@@ -1,4 +1,4 @@
-const { Order, Op } = require('../models/models');
+const { Order, Payment, OrderItem, Op } = require('../models/models');
 
 const OrderController = {
   getAll: async (req, res) => {
@@ -26,12 +26,51 @@ const OrderController = {
     }
   },
   add: async (req, res) => {
-    const { name } = req.body;
+    const {
+      name,
+      surname,
+      email,
+      phone,
+      status,
+      deliveryType,
+      deliveryDate,
+      deliveryAddress,
+      totalAmount,
+      totalPrice,
+      orderNotes = '',
+      products,
+    } = req.body;
+
+    const paymentId = Payment.create({
+      status: 'Pending',
+    });
+
+    const userId = null;
+
+    const items = products.forEach((element) => {
+      const item = OrderItem.create({});
+    });
 
     //todo: add all needed attr here
     try {
       await Order.create({
-        name: name,
+        user_name: name,
+        user_surname: surname,
+        user_email: email,
+        user_phone: phone,
+        status: status,
+        delivery_type: deliveryType,
+        delivery_date: deliveryDate,
+        delivery_address: deliveryAddress,
+        total_amount: totalAmount,
+        total_price: totalPrice,
+        order_notes: orderNotes,
+        // createdAt:
+        // updatedAt:
+        userId: userId,
+        paymentId: paymentId,
+        items: products,
+        // productId: productId,
       });
 
       return res.json({ msg: 'order added' });

@@ -47,14 +47,22 @@ const ActionsDesktop = ({ isAuth }) => {
               <NavLink to="/account">
                 <FormattedMessage id="global.account" />
               </NavLink>
+              <NavLink to="/saved-list">
+                <FormattedMessage id="wishList" />
+              </NavLink>
               <NavLink to="/#" onClick={handleLogout}>
                 <FormattedMessage id="global.logout" />
               </NavLink>
             </React.Fragment>
           ) : (
-            <NavLink to="/login">
-              <FormattedMessage id="login" />
-            </NavLink>
+            <React.Fragment>
+              <NavLink to="/saved-list">
+                <FormattedMessage id="wishList" />
+              </NavLink>
+              <NavLink to="/login">
+                <FormattedMessage id="login" />
+              </NavLink>
+            </React.Fragment>
           )}
         </div>
       </div>

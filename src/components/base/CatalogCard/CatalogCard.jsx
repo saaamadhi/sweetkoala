@@ -11,7 +11,7 @@ import styles from './catalogCard.css';
 const CatalogCard = ({ item, publicId }) => {
   const { wrap, inner, main_info, basket, like, img } = styles;
 
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
 
   const handleAddToList = () => {
     dispatch(ActionCreators.addToWishList(item));
@@ -28,7 +28,7 @@ const CatalogCard = ({ item, publicId }) => {
       </button>
       <div className={inner}>
         <Image publicId={publicId} className={img} />
-        <div className="product__name">Marshmello</div>
+        <div className="product__name">{item.name}</div>
       </div>
       <div className={main_info}>
         <span>Германия</span>

@@ -40,7 +40,7 @@ const Home = () => {
         <div className={lwder}>
           <ClipLoader loading={loading} size={50} />
         </div>
-        <Catalog products={products} />
+        <Catalog products={products} loading={loading} />
       </div>
       <Footer />
     </div>

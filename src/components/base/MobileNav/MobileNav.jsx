@@ -23,7 +23,7 @@ const MobileNav = ({ showMenu, setShowMenu, isAuth }) => {
         </li>
         <li className={classNames(menu_nav__item, { [open]: showMenu })}>
           <NavLink
-            to="#"
+            to="/delivery"
             className={menu_nav__link}
             onClick={() => {
               setShowMenu(!showMenu);
@@ -33,17 +33,7 @@ const MobileNav = ({ showMenu, setShowMenu, isAuth }) => {
         </li>
         <li className={classNames(menu_nav__item, { [open]: showMenu })}>
           <NavLink
-            to="#"
-            className={menu_nav__link}
-            onClick={() => {
-              setShowMenu(!showMenu);
-            }}>
-            <FormattedMessage id="global.contacts" />
-          </NavLink>
-        </li>
-        <li className={classNames(menu_nav__item, { [open]: showMenu })}>
-          <NavLink
-            to="#"
+            to="/about"
             className={menu_nav__link}
             onClick={() => {
               setShowMenu(!showMenu);
@@ -53,7 +43,7 @@ const MobileNav = ({ showMenu, setShowMenu, isAuth }) => {
         </li>
         <li className={classNames(menu_nav__item, { [open]: showMenu })}>
           <NavLink
-            to="#"
+            to="/help"
             className={menu_nav__link}
             onClick={() => {
               setShowMenu(!showMenu);
